@@ -11,7 +11,7 @@
     <header>
         <h1 class="page-title">Taskinator</h1>
         <p>click the button below to add a new task</p>
-        <button class="btn">Add Task</button>
+        <button class="btn" id="save-task">Add Task</button>
     </header>
     <main class="page-content">
         <section class="task-list-wrapper">
@@ -25,7 +25,12 @@
     <footer>
         &copy;2020 by Taskinator
     </footer>
-    <script scr="./assets/js/script.js"></script>
-    
+    <script scr="./assets/js/script.js">
+     buttonEl.addEventListener("click", function() {
+  alert("button clicked");
+        });
+    </script>
+    </script>
+   
 </body>
 </html>
