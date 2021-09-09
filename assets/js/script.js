@@ -3,7 +3,7 @@ var formEl = document.querySelector("#task-form");
 var tasksToDoEl = document.querySelector("#tasks-to-do"); 
 
 //function 
-var createTaskHandler = function(event) { 
+var taskFormHandler = function(event) { 
   // prevents the browser from refreshing the page so the tasks stay as li
   event.preventDefault();
 
@@ -13,8 +13,19 @@ var createTaskHandler = function(event) {
   var taskNameInput = document.querySelector("input[name = 'task-name']").value;
   var taskTypeInput = document.querySelector("select[name = 'task-type']").value;
 
+  // package up data as an object 
+  var taskDataObj = {
+    name: taskNameInput,
+    type: taskTypeInput
+  };
 
-// create list item
+  // send it as an argument to createTaskEL
+  createTaskEL(taskDataObj);
+}
+
+var createTaskEL = function(taskDataObj) {
+
+  // create list item
   var listItemEl = document.createElement("li"); 
   listItemEl.className = "task-item"; 
 
@@ -25,20 +36,14 @@ var createTaskHandler = function(event) {
   taskInfoEl.className = "task-info";
 
   // add HTML content to div
-  taskInfoEl.innerHTML = "<h3 class='task-name'>" + taskNameInput + "</h3><span class='task-type'>" + taskTypeInput + "</span>";
+  taskInfoEl.innerHTML = "<h3 class='task-name'>" + taskDataObj.name + "</h3><span class='task-type'>" + taskDataObj.type + "</span>";
 
 
   listItemEl.appendChild(taskInfoEl);
 
   // add entire list item to list 
   tasksToDoEl.appendChild(listItemEl);
-
-// Do I need this code? below two lines
-  // listItemEl.textContent = taskNameInput; 
-  // tasksToDoEl.appendChild(listItemEl); 
-  console.dir(listItemEl);
   }; 
 
   // event listener to have the form submit with the above function 
-formEl.addEventListener("submit", createTaskHandler);
-
+formEl.addEventListener("submit", taskFormHandler);
