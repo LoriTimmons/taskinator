@@ -118,12 +118,14 @@ var taskActionsEL = createTaskActions(taskIDCounter);
     if (event.target.matches("button.btn.delete")) {
       // console.log("you clicked a delete button!");
     }
+
+    
   };
 
   // Delete function 
   var deleteTask = function(taskId) {
     console.log(taskId);
-    
+
     // find task list element with task ID value and remove it
     
     var taskSelected = document.querySelector(".task-item[data-task-id='" + taskId + "']");
