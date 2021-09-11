@@ -2,6 +2,7 @@
 var formEl = document.querySelector("#task-form"); 
 var tasksToDoEl = document.querySelector("#tasks-to-do"); 
 var taskIDCounter = 0;
+var pageContentEL = document.querySelector("#page-content");
 
 //function 
 var taskFormHandler = function(event) { 
@@ -111,7 +112,16 @@ var taskActionsEL = createTaskActions(taskIDCounter);
 
   }
 
- 
+  var taskButtonHandler = function(event) {
+    console.log(event.target);
+  
+    if (event.target.matches(".delete-btn")) {
+      console.log("you clicked a delete button!");
+    }
+  };
 
   // event listener to have the form submit with the above function 
 formEl.addEventListener("submit", taskFormHandler);
+
+
+pageContentEL.addEventListener("click", taskButtonHandler);
