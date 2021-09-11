@@ -113,12 +113,31 @@ var taskActionsEL = createTaskActions(taskIDCounter);
   }
 
   var taskButtonHandler = function(event) {
-    console.log(event.target);
+    // console.log(event.target);
   
-    if (event.target.matches(".delete-btn")) {
-      console.log("you clicked a delete button!");
+    if (event.target.matches("button.btn.delete")) {
+      // console.log("you clicked a delete button!");
     }
   };
+
+  // Delete function 
+  var deleteTask = function(taskId) {
+    console.log(taskId);
+    
+    // find task list element with task ID value and remove it
+    
+    var taskSelected = document.querySelector(".task-item[data-task-id='" + taskId + "']");
+    console.log(taskSelected);
+    taskSelected.remove();
+  };
+  
+  // // Remove?
+  //   if(Event.target.matches("button.btn.delete")) {
+  //   var taskID = Event.target.getAttribute("data-task-id");
+  //   deleteTask(taskID);
+  //   }
+
+  // };
 
   // event listener to have the form submit with the above function 
 formEl.addEventListener("submit", taskFormHandler);
